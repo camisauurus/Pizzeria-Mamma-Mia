@@ -1,21 +1,25 @@
-export default function CardPizza({img, pizzaName, price, ingredients}) {
-    const [ingredient1, ingredient2, ingredient3, ingredient4] = ingredients;
+export default function CardPizza({ pizza }) {
+  const { img, name, price, ingredients } = pizza;
   return (
     <div className="card-pizza">
       <div>
-        <img src={img} alt="" />
+      <img src={img} alt={`Pizza ${name}`} />
       </div>
       <div>
-        <h2>Pizza {pizzaName}</h2>
-      </div>
-      <hr />
-      <div>
-        <h3>Ingredientes:</h3>
-        <p>🍕 {ingredient1}, {ingredient2}, {ingredient3}, {ingredient4}</p>
+        <h2>Pizza {name}</h2>
       </div>
       <hr />
       <div>
-        <p>Precio: ${price}</p>
+      <h3>Ingredientes:</h3>
+      <ul>
+        {ingredients.map((ing, i) => (
+          <li key={i}>🍕 {ing}</li>
+        ))}
+      </ul>
+      </div>
+      <hr />
+      <div>
+      <p><strong>Precio:</strong> ${price.toLocaleString('es-CL')}</p>
       </div>
       <div>
         <button>Ver más 👀</button>
