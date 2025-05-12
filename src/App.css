@@ -50,6 +50,7 @@ header {
     height: 400px;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -60,9 +61,18 @@ header {
     align-items: center;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
 .card-pizza {
-    width: 400px;
-    height: 550px;
+    width: 280px;
+    max-width: 100%;
+     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -223,6 +233,43 @@ header {
 .login button:hover {
     background-color: white;
     color: rgb(27, 27, 36);
+}
+
+.pizza-details {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.pizza-details img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.pizza-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pizza-details button {
+    background-color: rgb(27, 27, 36);
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px;
 }
 
 .footer {

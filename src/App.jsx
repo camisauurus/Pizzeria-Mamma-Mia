@@ -6,6 +6,7 @@ import CardPizza from './components/CardPizza'
 import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
+import Pizza from './components/Pizza'
 import './App.css'
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
       {/* <Home/> */}
       {/* <Register/> */}
       {/* <Login/> */}
-      <Cart />
+      {/* <Cart /> */}
+      <Pizza />
       <Footer/>
     </>
   )

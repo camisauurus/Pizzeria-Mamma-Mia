@@ -14,8 +14,7 @@ export default function Cart() {
   };
 
   const disminuir = (id) => {
-    const nuevoCarrito = cart
-      .map(pizza =>
+    const nuevoCarrito = cart.map(pizza =>
         pizza.id === id
           ? { ...pizza, count: pizza.count - 1 }
           : pizza
