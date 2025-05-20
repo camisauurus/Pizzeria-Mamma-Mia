@@ -20,7 +20,7 @@ function Navbar({ total, token }) {
           <Link to={"/login"}>
           <button>🔐 Log In</button>
           </Link>
-          <Link to={"*"}>
+          <Link to={"/404"}>
           <button>🤔 Not Found</button>
           </Link>
           {/* <button>🔒 Logout</button> */}
