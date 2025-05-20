@@ -2,6 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
 }
 
 body{
@@ -24,7 +35,7 @@ nav button {
     border: 1px solid white;
     padding: 10px 20px;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
     cursor: pointer;
     margin: 10px;
@@ -235,6 +246,26 @@ header {
     color: rgb(27, 27, 36);
 }
 
+.profile {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    gap: 24px;
+}
+
+button {
+    background-color: rgb(27, 27, 36);
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
 .pizza-details {
   max-width: 600px;
   margin: 40px auto;
@@ -271,6 +302,39 @@ header {
     cursor: pointer;
     margin: 20px;
 }
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(27, 27, 36);
+    background-color: #fff;
+    margin: 24px;
+    gap: 10px;
+}
+
+.not-found img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.volver {
+    background-color: rgb(27, 27, 36);
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+}
+
 
 .footer {
     display: flex;
