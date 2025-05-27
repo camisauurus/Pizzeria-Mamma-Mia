@@ -2,9 +2,14 @@ import Header from '../components/Header';
 // import { pizzas } from '../pizzas.js';
 import CardPizza from '../components/CardPizza';
 import { useEffect, useState } from 'react';
+import { useContext } from "react";
+import { PizzasContext } from "../context/PizzasContext";
 
 function Home() {
-  const [pizzas, setPizzas] = useState([])
+  const { pizzas, loading, error } = useContext(PizzasContext);
+
+  if (loading) return <p>Cargando pizzas...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   useEffect(() => {
     fetch('http://localhost:5000/api/pizzas')

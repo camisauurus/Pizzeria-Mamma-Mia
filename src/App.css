@@ -108,7 +108,7 @@ header {
 }
 
 .card-pizza button {
-    background-color: transparent;
+    background-color: rgb(27, 27, 36);
     border: 1px solid #ccc;
     padding: 8px;
     margin: 10px;

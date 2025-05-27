@@ -1,32 +1,10 @@
 import { pizzaCart } from '../pizzas';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 export default function Cart() {
-  const [cart, setCart] = useState(pizzaCart);
-
-  const aumentar = (id) => {
-    const nuevoCarrito = cart.map(pizza =>
-      pizza.id === id
-        ? { ...pizza, count: pizza.count + 1 }
-        : pizza
-    );
-    setCart(nuevoCarrito);
-  };
-
-  const disminuir = (id) => {
-    const nuevoCarrito = cart.map(pizza =>
-        pizza.id === id
-          ? { ...pizza, count: pizza.count - 1 }
-          : pizza
-      )
-      .filter(pizza => pizza.count > 0); // elimina si count llega a 0
-    setCart(nuevoCarrito);
-  };
-
-  const total = cart.reduce(
-    (sum, pizza) => sum + pizza.count * pizza.price,
-    0
-  );
+  const { cart, increase, decrease, total } = useContext(CartContext);
 
   return (
     <div className="cart">
@@ -37,9 +15,9 @@ export default function Cart() {
           <span>{pizza.name}</span>
           <span>${pizza.price.toLocaleString('es-CL')}</span>
           <div>
-            <button onClick={() => disminuir(pizza.id)}>-</button>
+            <button onClick={() => decrease(pizza.id)}>-</button>
             <span>{pizza.count}</span>
-            <button onClick={() => aumentar(pizza.id)}>+</button>
+            <button onClick={() => increase(pizza.id)}>+</button>
           </div>
         </div>
       ))}
