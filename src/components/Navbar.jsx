@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
-function Navbar({ token }) {
+function Navbar() {
   const { total } = useContext(CartContext);
-
+  const { token, logout } = useContext(UserContext);
   return (
     <nav>
       <Link to={"/"}>
@@ -18,15 +19,7 @@ function Navbar({ token }) {
           <Link to={"/profile"}>
             <button>🔓 Profile</button>
           </Link>
-          <Link to={"/register"}>
-            <button>✍️ Register</button>
-          </Link>
-          <Link to={"/login"}>
-            <button>🔐 Log In</button>
-          </Link>
-          <Link to={"*"}>
-            <button>🤔 Not Found</button>
-          </Link>
+          <button onClick={logout}>🔒 Logout</button> {/* ✅ logout funcional */}
         </>
       ) : (
         <>

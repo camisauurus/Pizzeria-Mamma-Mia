@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function CardPizza({ pizza }) {
   const { img, name, price, ingredients } = pizza;
@@ -16,7 +17,9 @@ export default function CardPizza({ pizza }) {
         ))}
       </ul>
       <p><strong>Precio:</strong> ${price.toLocaleString('es-CL')}</p>
+      <Link to={`/pizza/${pizza.id}`}>
       <button>Ver más 👀</button>
+      </Link>
       <button onClick={() => addToCart(pizza)}>Añadir 🛒</button> {/* ✅ importante */}
     </div>
   );

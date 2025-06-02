@@ -10,6 +10,8 @@ import Login from './pages/Login'
 import Pizza from './pages/Pizza'
 import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 import './App.css'
 
 function App() {
@@ -18,16 +20,41 @@ function App() {
   
   return (
     <div className='layout'>
-      <Navbar total={total} token={token}/>
+      <Navbar total={total} />
       <main className='main-content'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
         <Route path="/pizza/p001" element={<Pizza />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path='/404' element={<NotFound />}></Route>
+        <Route path="/pizza/:id" element={<Pizza />} />
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
       </main>
       <Footer />
