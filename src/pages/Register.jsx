@@ -1,44 +1,43 @@
-import { useState } from "react"
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [message, setMessage] = useState(false)
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if (!email || !password || !confirmPassword) {
-            setMessage('Todos los campos son obligatorios')
-            return
-        }
-        if (password.length < 6) {
-            setMessage("La contraseña debe tener al menos 6 caracteres")
-            return
-        }
-        if (password !== confirmPassword) {
-            setMessage("Las contraseñas no coinciden")
-            return
-        }
-        setMessage('');
-        alert('Datos enviados correctamente');
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await register(email, password);
+    navigate("/profile"); 
+  };
 
-    return (
-        <div className="register">
-            <h1>Registrate</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Correo Electrónico</label>
-                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="password">Contraseña</label>
-                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <label htmlFor="confirmPassword">Confirmar contraseña</label>
-                <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                <button type="submit">Enviar</button>
-                {message && <p className="message">{message}</p>}
-            </form>
-        </div>
-    )
+  return (
+    <div className="register">
+      <h2>Registrarse</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Contraseña:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+  );
 }
-
-export default Register

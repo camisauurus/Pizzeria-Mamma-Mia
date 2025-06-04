@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
@@ -6,6 +6,13 @@ import { UserContext } from "../context/UserContext";
 function Navbar() {
   const { total } = useContext(CartContext);
   const { token, logout } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <nav>
       <Link to={"/"}>
@@ -19,7 +26,7 @@ function Navbar() {
           <Link to={"/profile"}>
             <button>🔓 Profile</button>
           </Link>
-          <button onClick={logout}>🔒 Logout</button> {/* ✅ logout funcional */}
+          <button onClick={handleLogout}>🚪 Logout</button>
         </>
       ) : (
         <>
@@ -36,3 +43,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
